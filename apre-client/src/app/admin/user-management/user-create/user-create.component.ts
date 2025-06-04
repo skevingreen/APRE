@@ -54,7 +54,9 @@ export class UserCreateComponent {
   errorMessage: string;
 
   newUserForm: FormGroup = this.fb.group({
+    // Changed the value of the username field from null to "Enter your username" so that users have a prompt instead of a blank box - SKG June 3, 2025
     username: ["Enter your username", Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])],
+
     password: [null, Validators.compose([Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}')])],
     email: [null, Validators.compose([Validators.required, Validators.email])],
     role: [null, Validators.required]
