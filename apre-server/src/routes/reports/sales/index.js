@@ -128,6 +128,55 @@ router.get('/sales-by-month', (req, res, next) => {
 /**
  * @description
  *
+ * GET /categories
+ *
+ * Fetches a list of distinct sales categories.
+ *
+ * Example:
+ * fetch('/categories')
+ *  .then(response => response.json())
+ *  .then(data => console.log(data));
+ */
+router.get('/categories', (req, res, next) => {
+  try {
+    mongo (async db => {
+      const categories = await db.collection('sales').distinct('category');
+      res.send(categories);
+    }, next);
+  } catch (err) {
+    console.error('Error getting categories: ', err);
+    next(err);
+  }
+});
+
+/**
+ * @description
+ *
+ * GET /customers
+ *
+ * Fetches a list of distinct sales customers.
+ *
+ * Example:
+ * fetch('/customers')
+ *  .then(response => response.json())
+ *  .then(data => console.log(data));
+ */
+router.get('/customers', (req, res, next) => {
+  try {
+    mongo (async db => {
+      const customers = await db.collection('sales').distinct('customer');
+      res.send(customers);
+    }, next);
+  } catch (err) {
+    console.error('Error getting customers: ', err);
+    next(err);
+  }
+});
+
+
+/**
+ * @description
+ *
  * GET /sales-by-category-and-customer-tabular
  *
  * Fetches sales data for a specific category and customer.
