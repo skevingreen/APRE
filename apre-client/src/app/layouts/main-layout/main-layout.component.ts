@@ -307,7 +307,8 @@ export class MainLayoutComponent {
   salesReports = [
     { name: 'Sales by Region', url: '/reports/sales/sales-by-region' },
     { name: 'Sales by Region - Tabular', url: '/reports/sales/sales-by-region-tabular' },
-    { name: 'Sales by Month', url: '/reports/sales/sales-by-month'}
+    { name: 'Sales by Month', url: '/reports/sales/sales-by-month'},
+    { name: 'Sales by Category and Customer - Tabular', url: '/reports/sales/sales-by-category-and-customer-tabular'} // add link for new sales report - task M-072	- SKG June 6, 2025
     // Add more reports as needed
   ];
 

@@ -26,6 +26,7 @@ import { ChannelRatingByMonthComponent } from './reports/customer-feedback/chann
 import { CustomerFeedbackComponent } from './reports/customer-feedback/customer-feedback.component';
 import { SalesByRegionTabularComponent } from './reports/sales/sales-by-region-tabular/sales-by-region-tabular.component';
 import { SalesByMonthComponent } from './reports/sales/sales-by-month/sales-by-month.component';
+import { SalesByCategoryAndCustomerTabularComponent } from './reports/sales/sales-by-category-and-customer-tabular/sales-by-category-and-customer-tabular.component';
 
 // Export user-management routes
 export const userManagementRoutes: Routes = [
@@ -61,6 +62,10 @@ export const salesReportRoutes: Routes = [
   {
     path: 'sales-by-month',
     component: SalesByMonthComponent
+  },
+  { // Added new sales route - SKG June 6, 2025
+    path: 'sales-by-category-and-customer-tabular',
+    component: SalesByCategoryAndCustomerTabularComponent
   }
 ];
 
