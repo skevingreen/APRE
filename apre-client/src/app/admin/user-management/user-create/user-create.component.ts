@@ -18,7 +18,9 @@ import { environment } from '../../../../environments/environment';
       <form [formGroup]="newUserForm" (ngSubmit)="addUser();" class="form">
         <div class="form__group">
           <label class="label" for="username">Username<span class="required">*</span></label>
-          <input class="input" type="text" id="username" name="username" formControlName="username">
+
+          <!-- Added placeholder for task m-001 - SKG June 7, 2025 -->
+          <input class="input" type="text" id="username" name="username" formControlName="username" placeholder="Enter your username">
         </div>
 
         <div class="form__group">
@@ -54,9 +56,7 @@ export class UserCreateComponent {
   errorMessage: string;
 
   newUserForm: FormGroup = this.fb.group({
-    // Changed the value of the username field from null to "Enter your username" so that users have a prompt instead of a blank box - SKG June 3, 2025
-    username: ["Enter your username", Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])],
-
+    username: [null, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])],
     password: [null, Validators.compose([Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}')])],
     email: [null, Validators.compose([Validators.required, Validators.email])],
     role: [null, Validators.required]
