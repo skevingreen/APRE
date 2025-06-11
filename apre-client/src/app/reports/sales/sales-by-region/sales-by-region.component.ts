@@ -14,7 +14,11 @@ import { ChartComponent } from '../../../shared/chart/chart.component';
       <form class="form" [formGroup]="regionForm" (ngSubmit)="onSubmit()">
         <div class="form__group">
           <label class="label" for="region">Region</label>
-          <select class="select" formControlName="region" id="region" name="region">
+          <!-- m-020 1 of 4: add the "required" attribute to the select element - SKG June 10, 2025 -->
+          <select required class="select" formControlName="region" id="region" name="region">
+            <!-- m-020 2 of 4: add a disabled option with an empty string value to display placeholder
+                   text as demonstrated by Professor Krasso - SKG June 10, 2025 -->
+            <option value="" disabled>Select region</option>
             @for(region of regions; track region) {
               <option value="{{ region }}">{{ region }}</option>
             }
@@ -47,6 +51,12 @@ import { ChartComponent } from '../../../shared/chart/chart.component';
       width: 50%;
       margin: 20px 0;
     }
+
+    /* m-020 3 of 4: the placeholder option will be invalid since it is disabled; make it gray
+         to distinguish from valid options and to match other placeholders - SKG June 10, 2025 */
+    select:invalid {
+      color: gray;
+    }
   `]
 })
 export class SalesByRegionComponent implements AfterViewInit {
@@ -54,8 +64,10 @@ export class SalesByRegionComponent implements AfterViewInit {
   salesPeople: string[] = [];
   regions: string[] = [];
 
+  /*  m-020 4 of 4: change the default value of region from null to '' so that instead of
+        being blank, the text for the placeholder option will be selected and displayed - SKG June 10, 2025 */
   regionForm = this.fb.group({
-    region: [null, Validators.compose([Validators.required])]
+    region: ['', Validators.compose([Validators.required])]
   });
 
   constructor(
