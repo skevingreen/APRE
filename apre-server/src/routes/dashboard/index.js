@@ -51,7 +51,7 @@ router.get('/sales-data', (req, res, next) => {
       res.send(salesData);
     }, next);
   } catch (err) {
-    console.error('ErrorSKG: ' + err.message);
+    console.error('Error: ' + err.message);
     next(err);
   }
 });

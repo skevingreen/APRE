@@ -91,21 +91,25 @@ export class SalesByRegionComponent implements AfterViewInit {
 
   onSubmit() {
     const region = this.regionForm.controls['region'].value;
-    this.http.get(`${environment.apiBaseUrl}/reports/sales/regions/${region}`).subscribe({
-      next: (data: any) => {
-        this.totalSales = data.map((s: any) => s.totalSales);
-        this.salesPeople = data.map((s: any) => s.salesperson);
 
-        console.log('totalSales', this.totalSales);
-        console.log('salesPeople', this.salesPeople);
+    // make sure a valid region is selected before proceeding - SKG June 14, 2025
+    if (region) { // this is needed since we added a placeholder text with a value of ''
+      this.http.get(`${environment.apiBaseUrl}/reports/sales/regions/${region}`).subscribe({
+        next: (data: any) => {
+          this.totalSales = data.map((s: any) => s.totalSales);
+          this.salesPeople = data.map((s: any) => s.salesperson);
 
-        // Trigger change detection
-        this.cdr.markForCheck();
-        this.cdr.detectChanges();
-      },
-      error: (err) => {
-        console.error('Error fetching sales data:', err);
-      }
-    });
+          console.log('totalSales', this.totalSales);
+          console.log('salesPeople', this.salesPeople);
+
+          // Trigger change detection
+          this.cdr.markForCheck();
+          this.cdr.detectChanges();
+        },
+        error: (err) => {
+          console.error('Error fetching sales data:', err);
+        }
+      });
+    }
   }
 }
