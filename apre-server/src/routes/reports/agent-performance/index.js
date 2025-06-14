@@ -93,4 +93,69 @@ router.get('/call-duration-by-date-range', (req, res, next) => {
   }
 });
 
+/**
+ *  task M-088 - SKG June 13, 2025
+ *
+ * @description
+ *
+ * GET /agent-performance-by-metric-type-tabular
+ *
+ * Fetches agent performance by the specified metric type.
+ *
+ * Example:
+ * fetch('/agent-performance-by-metric-type-tabular?metricType=Customer Satisfaction')
+ *  .then(response => response.json())
+ *  .then(data => console.log(data));
+ */
+router.get('/agent-performance-by-metric-type-tabular', (req, res, next) => {
+  try {
+    const { metricType } = req.query; // get the value of the metricType parameter from the request
+
+    if (!metricType) {                // if the metricType is falsy, throw an error
+      return next(createError(400, 'Metric type is required'));
+    }
+
+    console.log('Fetching call duration report for metric type:', metricType);
+
+    mongo(async db => {
+      // const data = await db.collection('agentPerformance').find({}).project({
+      //   _id: 0,                     // leave out the _id field
+      //   region: 1,
+      //   team: 1,
+      //   agentId: 1,
+      //   performanceMetrics: {
+      //     $elemMatch: {
+      //       metricType: metricType  // just pull back the data for the requested metricType
+      //     }
+      //   }
+      // }).toArray();
+
+      const data = await db.collection('agentPerformance').aggregate([
+        {
+          $unwind: '$performanceMetrics'
+        },
+        {
+          $match: {
+            'performanceMetrics.metricType': 'Sales Conversion'
+          }
+        },
+        {
+          $project: {
+            _id: 0,
+            region: 1,
+            team: 1,
+            agentId: 1,
+            value: '$performanceMetrics.value'
+          }
+        }
+      ]).toArray()
+
+      res.send(data);
+    }, next);
+  } catch (err) {
+    console.error('Error in /agent-performance-by-metric-type-tabular', err); // log if some other error occurs and pass it up the chain
+    next(err);
+  }
+});
+
 module.exports = router;

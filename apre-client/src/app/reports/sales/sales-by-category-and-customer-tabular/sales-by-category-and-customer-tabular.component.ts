@@ -8,7 +8,7 @@ import { TableComponent } from '../../../shared/table/table.component';
 import { environment } from '../../../../environments/environment';
 
 @Component({
-  selector: 'app-sales-by-category-and-customer',
+  selector: 'app-sales-by-category-and-customer-tabular',
   standalone: true,
   imports: [ReactiveFormsModule, TableComponent],
   template: `
@@ -48,6 +48,8 @@ import { environment } from '../../../../environments/environment';
             [title]="'Sales for ' + selectedCategory + ' ' + selectedCustomer"
             [data]="salesData"
             [headers]="['region', 'product', 'salesperson', 'channel', 'amount']"
+            [sortableColumns]="['region', 'product', 'salesperson', 'channel', 'amount']"
+            [headerBackground]="'secondary'"
           >
           </app-table>
         </div>

@@ -28,9 +28,9 @@ describe('SalesByRegionComponent', () => {
     expect(titleElement.textContent).toContain('Sales by Region');
   });
 
-  it('should initialize the regionForm with a null value', () => {
+  it('should initialize the regionForm with an empty string', () => {
     const regionControl = component.regionForm.controls['region'];
-    expect(regionControl.value).toBeNull();
+    expect(regionControl.value).toBe('');
     expect(regionControl.valid).toBeFalse();
   });
 

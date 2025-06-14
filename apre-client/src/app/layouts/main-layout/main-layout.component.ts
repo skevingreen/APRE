@@ -313,7 +313,8 @@ export class MainLayoutComponent {
   ];
 
   agentPerformanceReports = [
-    { name: 'Call Duration by Date Range', url: '/reports/agent-performance/call-duration-by-date-range' }
+    { name: 'Call Duration by Date Range', url: '/reports/agent-performance/call-duration-by-date-range' },
+    { name: 'Agent Performance by Metric Type - Tabular', url: '/reports/agent-performance/agent-performance-by-metric-type-tabular' } // add link for new agent performance report - task M-088 - SKG June 13, 2025
     // Add more reports as needed
   ];
 
