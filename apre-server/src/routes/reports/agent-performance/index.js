@@ -118,18 +118,6 @@ router.get('/agent-performance-by-metric-type-tabular', (req, res, next) => {
     console.log('Fetching call duration report for metric type:', metricType);
 
     mongo(async db => {
-      // const data = await db.collection('agentPerformance').find({}).project({
-      //   _id: 0,                     // leave out the _id field
-      //   region: 1,
-      //   team: 1,
-      //   agentId: 1,
-      //   performanceMetrics: {
-      //     $elemMatch: {
-      //       metricType: metricType  // just pull back the data for the requested metricType
-      //     }
-      //   }
-      // }).toArray();
-
       const data = await db.collection('agentPerformance').aggregate([
         {
           $unwind: '$performanceMetrics'
