@@ -24,7 +24,8 @@ import { CookieService } from 'ngx-cookie-service';
           <input id="username" formControlName="username" type="text" class="signin__input" />
         </div>
         <div class="signin__form-group">
-          <label for="password" class="signin__label">Password</label>
+          <!-- Added an asterisk next to the Password label to indicate that it is a required field - SKG m-032 - June 17, 2025 -->
+          <label for="password" class="signin__label">Password<span class="required">*</span></label>
           <input id="password" formControlName="password" type="password" class="signin__input" />
         </div>
         <input type="submit" class="signin__button" Value="Submit" />
