@@ -319,7 +319,9 @@ export class MainLayoutComponent {
   ];
 
   customerFeedbackReports = [
-    { name: 'Channel Rating by Month', url: '/reports/customer-feedback/channel-rating-by-month' }
+    { name: 'Channel Rating by Month', url: '/reports/customer-feedback/channel-rating-by-month' },
+    // add link for new customer feedback report - task M-106 - SKG June 18, 2025
+    { name: 'Customer Feedback by Product - Tabular', url: '/reports/customer-feedback/feedback-by-product-tabular' }
     // Add more reports as needed
   ];
 

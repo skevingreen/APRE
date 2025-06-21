@@ -28,6 +28,7 @@ import { SalesByRegionTabularComponent } from './reports/sales/sales-by-region-t
 import { SalesByMonthComponent } from './reports/sales/sales-by-month/sales-by-month.component';
 import { SalesByCategoryAndCustomerTabularComponent } from './reports/sales/sales-by-category-and-customer-tabular/sales-by-category-and-customer-tabular.component';
 import { AgentPerformanceByMetricTypeTabularComponent } from './reports/agent-performance/agent-performance-by-metric-type/agent-performance-by-metric-type-tabular.component';
+import { FeedbackByProductTabularComponent } from './reports/customer-feedback/feedback-by-product-tabular/feedback-by-product-tabular.component';
 
 // Export user-management routes
 export const userManagementRoutes: Routes = [
@@ -64,7 +65,7 @@ export const salesReportRoutes: Routes = [
     path: 'sales-by-month',
     component: SalesByMonthComponent
   },
-  { // Added new sales route - SKG June 6, 2025
+  { // Added new sales route - task M-072 - SKG June 6, 2025
     path: 'sales-by-category-and-customer-tabular',
     component: SalesByCategoryAndCustomerTabularComponent
   }
@@ -87,6 +88,10 @@ export const customerFeedbackRoutes: Routes = [
   {
     path: 'channel-rating-by-month',
     component: ChannelRatingByMonthComponent
+  },
+  { // Added new feedback route - task M-106 - SKG June 18, 2025
+    path: 'feedback-by-product-tabular',
+    component: FeedbackByProductTabularComponent
   }
 ];
 
