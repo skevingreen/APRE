@@ -5,12 +5,12 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { environment} from '../../../../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; // Is this really needed?
 
 @Component({
   selector: 'app-user-details',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink], // Removed CommonModule
   template: `
     <div>
       <h1>User Details</h1>

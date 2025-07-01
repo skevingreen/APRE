@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; // Is this really needed?
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -8,7 +8,7 @@ import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-user-create',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink], // Removed CommonModule
   template: `
     <div>
       <h1>User Create</h1>
